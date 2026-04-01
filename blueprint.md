@@ -1,28 +1,28 @@
 
-# 오늘의 분위기 (Mood-Based Music Recommendation)
+# 마음 진단소 (Mind Diagnosis & Music Recommendation)
 
 ## Overview
 
-A modern, responsive web application that provides personalized music recommendations based on the user's current mood. It features a sleek glassmorphism design with dynamic background transitions.
+사용자의 현재 심리 상태를 10가지 질문을 통해 진단하고, 그 결과에 가장 잘 어울리는 음악을 추천해 주는 웹 애플리케이션입니다.
 
 ## Features & Design
 
-*   **Mood-Based Discovery**: Users can select from four primary moods:
-    *   😊 **Happy**: Bright, upbeat pop and K-pop hits.
-    *   😢 **Sad**: Emotional ballads and soul-stirring tracks.
-    *   ⚡ **Energetic**: High-energy dance and synth-pop.
-    *   🧘 **Chill**: Lofi, acoustic, and relaxing ambient music.
-*   **Modern Glassmorphism UI**:
-    *   Semi-transparent "glass" containers with frosted blur effects.
-    *   Dynamic background color transitions using OKLCH color space for vibrant and perceptually uniform themes.
-    *   Smooth animations for UI state changes and recommendation loading.
-*   **Interactive Song Cards**:
-    *   Minimalist cards displaying song titles and artists.
-    *   Direct links to listen to the songs on YouTube.
-*   **Fully Responsive**: Optimized for both mobile and desktop experiences.
+*   **심리 진단 테스트**:
+    *   10개의 질문으로 구성된 5점 척도 설문조사.
+    *   한 번에 하나의 질문씩 보여주는 직관적인 UI.
+    *   진행 상황을 알 수 있는 프로그레스 바.
+*   **감정 분석 알고리즘**:
+    *   사용자의 답변을 분석하여 6가지 주요 감정(기쁨, 슬픔, 당황, 상처, 불안, 분노) 중 가장 강한 감정을 도출.
+*   **방대한 음악 데이터베이스**:
+    *   각 감정마다 20곡씩, 총 120곡의 엄선된 플레이리스트 보유 (K-pop 및 팝송 포함).
+    *   매 테스트마다 해당 감정 내에서 랜덤하게 1곡을 추천하여 중복 방지.
+*   **다이내믹 테마 디자인**:
+    *   진단 결과에 따라 배경색, 버튼 색상, 이모티콘 등이 해당 감정의 테마로 자동 변경.
+    *   세련된 글래스모피즘(Glassmorphism) 스타일 적용.
+*   **반응형 웹**: 모바일과 데스크톱 어디서나 최적화된 화면 제공.
 
 ## Technical Details
 
-*   **HTML5**: Semantic structure for accessibility and SEO.
-*   **CSS3**: Custom properties (variables), OKLCH color functions, and Flexbox/Grid for layout.
-*   **Vanilla JavaScript**: State management for mood selection and dynamic DOM manipulation.
+*   **Frontend**: HTML5, CSS3 (Custom Properties, OKLCH), Vanilla JavaScript.
+*   **State Management**: 설문 점수 및 화면 전환 로직 구현.
+*   **Deployment**: GitHub를 통한 배포.
