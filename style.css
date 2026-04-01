@@ -1,1 +1,95 @@
-/* Add styles here */
+
+:root {
+    --primary-color: oklch(70% 0.25 260);
+    --background-start: oklch(30% 0.1 260);
+    --background-end: oklch(20% 0.1 280);
+    --glass-color: oklch(100% 0 0 / 10%);
+    --shadow-color: oklch(0% 0 0 / 25%);
+    --text-color: oklch(95% 0.01 260);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+    background-image: linear-gradient(to bottom right, var(--background-start), var(--background-end));
+    color: var(--text-color);
+    margin: 0;
+    padding: 1rem;
+    box-sizing: border-box;
+}
+
+.container {
+    text-align: center;
+    background-color: var(--glass-color);
+    padding: 2.5rem 3rem;
+    border-radius: 1.5rem;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid oklch(100% 0 0 / 20%);
+    box-shadow: 0 8px 32px 0 var(--shadow-color);
+    max-width: 500px;
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 8px var(--shadow-color);
+}
+
+#generate {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    border-radius: 0.75rem;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    box-shadow: 
+        0 0 10px var(--primary-color), 
+        0 0 20px var(--primary-color), 
+        inset 0 0 5px oklch(100% 0.25 260 / 50%);
+}
+
+#generate:hover {
+    transform: translateY(-3px);
+    box-shadow: 
+        0 0 15px var(--primary-color), 
+        0 0 30px var(--primary-color), 
+        inset 0 0 5px oklch(100% 0.25 260 / 50%);
+}
+
+#generate:active {
+    transform: translateY(0);
+}
+
+#numbers {
+    margin-top: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    min-height: 70px; /* Allocate space for the numbers */
+}
+
+.number-ball {
+    width: 60px;
+    height: 60px;
+    display: grid;
+    place-content: center;
+    font-size: 1.75rem;
+    font-weight: bold;
+    border-radius: 50%;
+    background-color: oklch(85% 0.15 260);
+    color: oklch(20% 0.1 280);
+    box-shadow: 0 4px 15px var(--shadow-color);
+    transition: transform 0.3s ease;
+}
+
+.number-ball:hover {
+    transform: scale(1.1);
+}
