@@ -3,27 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>오늘의 분위기 - 노래 추천</title>
+    <title>오늘의 분위기 - 6가지 감정 추천</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="mood-default">
     <div class="container glass">
         <header>
             <h1>오늘의 분위기</h1>
-            <p>지금 당신의 기분은 어떤가요? 어울리는 노래를 추천해 드릴게요.</p>
+            <p>지금 당신의 기분은 어떤가요? 딱 맞는 노래 1곡을 추천해 드릴게요.</p>
         </header>
         
         <div class="mood-selector">
-            <button class="mood-btn" data-mood="happy" aria-label="기쁨">😊 기쁨</button>
-            <button class="mood-btn" data-mood="sad" aria-label="슬픔">😢 슬픔</button>
-            <button class="mood-btn" data-mood="energetic" aria-label="활기참">⚡ 활기참</button>
-            <button class="mood-btn" data-mood="chill" aria-label="차분함">🧘 차분함</button>
+            <button class="mood-btn" data-mood="joy" aria-label="기쁨">😊 기쁨</button>
+            <button class="mood-btn" data-mood="sadness" aria-label="슬픔">😢 슬픔</button>
+            <button class="mood-btn" data-mood="embarrassment" aria-label="당황">😳 당황</button>
+            <button class="mood-btn" data-mood="hurt" aria-label="상처">💔 상처</button>
+            <button class="mood-btn" data-mood="anxiety" aria-label="불안">😰 불안</button>
+            <button class="mood-btn" data-mood="anger" aria-label="분노">🔥 분노</button>
         </div>
 
-        <main id="recommendations" class="recommendations-grid">
-            <!-- 노래 카드들이 여기에 생성됩니다 -->
-            <div class="empty-state">
-                <p>위에서 기분을 선택해 보세요!</p>
+        <main id="recommendation-area">
+            <div id="recommendation-result" class="recommendation-single">
+                <!-- 추천된 노래 카드 1개가 여기에 생성됩니다 -->
+                <div class="empty-state">
+                    <p>위에서 지금 느끼는 감정을 선택해 보세요!</p>
+                </div>
             </div>
         </main>
     </div>

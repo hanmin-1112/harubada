@@ -7,13 +7,13 @@
     --text-color: oklch(98% 0.01 260);
     --glass-bg: oklch(100% 0 0 / 12%);
     --glass-border: oklch(100% 0 0 / 20%);
-    --card-bg: oklch(100% 0 0 / 8%);
-    --transition-speed: 0.8s;
+    --card-bg: oklch(100% 0 0 / 10%);
+    --transition-speed: 0.6s;
 }
 
-/* Mood-specific Themes */
-body.mood-happy {
-    --bg-start: oklch(85% 0.2 85); /* Warm Yellow-Orange */
+/* 6 Mood-specific Themes */
+body.mood-joy {
+    --bg-start: oklch(85% 0.2 85); /* Yellow */
     --bg-end: oklch(75% 0.2 60);
     --primary-color: oklch(80% 0.25 80);
     --text-color: oklch(20% 0.05 85);
@@ -21,8 +21,8 @@ body.mood-happy {
     --card-bg: oklch(100% 0.02 85 / 15%);
 }
 
-body.mood-sad {
-    --bg-start: oklch(25% 0.08 260); /* Deep Blue-Indigo */
+body.mood-sadness {
+    --bg-start: oklch(25% 0.08 260); /* Deep Blue */
     --bg-end: oklch(15% 0.08 280);
     --primary-color: oklch(50% 0.15 260);
     --text-color: oklch(95% 0.01 260);
@@ -30,22 +30,40 @@ body.mood-sad {
     --card-bg: oklch(100% 0 0 / 5%);
 }
 
-body.mood-energetic {
-    --bg-start: oklch(65% 0.3 30); /* Electric Red-Pink */
-    --bg-end: oklch(55% 0.3 350);
-    --primary-color: oklch(60% 0.3 20);
-    --text-color: oklch(98% 0.01 20);
-    --glass-bg: oklch(0% 0 0 / 20%);
-    --card-bg: oklch(100% 0 0 / 10%);
+body.mood-embarrassment {
+    --bg-start: oklch(75% 0.15 330); /* Soft Magenta/Pink */
+    --bg-end: oklch(65% 0.15 310);
+    --primary-color: oklch(70% 0.2 320);
+    --text-color: oklch(20% 0.05 320);
+    --glass-bg: oklch(100% 0 0 / 35%);
+    --card-bg: oklch(100% 0.02 320 / 15%);
 }
 
-body.mood-chill {
-    --bg-start: oklch(80% 0.1 160); /* Soft Mint-Teal */
-    --bg-end: oklch(70% 0.1 180);
-    --primary-color: oklch(75% 0.15 170);
-    --text-color: oklch(25% 0.05 170);
-    --glass-bg: oklch(100% 0 0 / 45%);
-    --card-bg: oklch(100% 0.02 170 / 12%);
+body.mood-hurt {
+    --bg-start: oklch(35% 0.1 300); /* Muted Indigo/Purple */
+    --bg-end: oklch(25% 0.1 320);
+    --primary-color: oklch(45% 0.15 310);
+    --text-color: oklch(95% 0.01 310);
+    --glass-bg: oklch(0% 0 0 / 20%);
+    --card-bg: oklch(100% 0 0 / 8%);
+}
+
+body.mood-anxiety {
+    --bg-start: oklch(70% 0.1 190); /* Muted Teal/Cyan */
+    --bg-end: oklch(60% 0.1 210);
+    --primary-color: oklch(65% 0.15 200);
+    --text-color: oklch(20% 0.05 200);
+    --glass-bg: oklch(100% 0 0 / 30%);
+    --card-bg: oklch(100% 0.02 200 / 12%);
+}
+
+body.mood-anger {
+    --bg-start: oklch(45% 0.2 25); /* Deep Red */
+    --bg-end: oklch(35% 0.2 35);
+    --primary-color: oklch(50% 0.25 30);
+    --text-color: oklch(98% 0.01 30);
+    --glass-bg: oklch(0% 0 0 / 30%);
+    --card-bg: oklch(100% 0 0 / 15%);
 }
 
 * {
@@ -69,7 +87,7 @@ body {
 
 .container {
     width: 100%;
-    max-width: 900px;
+    max-width: 800px;
     padding: 3rem;
     border-radius: 2rem;
     text-align: center;
@@ -87,7 +105,7 @@ body {
 header h1 {
     font-size: 2.8rem;
     font-weight: 800;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
     letter-spacing: -1px;
 }
 
@@ -101,12 +119,12 @@ header p {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1.2rem;
+    gap: 1rem;
     margin-bottom: 3.5rem;
 }
 
 .mood-btn {
-    padding: 0.8rem 1.8rem;
+    padding: 0.8rem 1.6rem;
     font-size: 1.1rem;
     font-weight: 600;
     border: 1px solid var(--glass-border);
@@ -118,9 +136,9 @@ header p {
 }
 
 .mood-btn:hover {
-    transform: translateY(-4px) scale(1.05);
+    transform: translateY(-4px);
     background-color: oklch(100% 0 0 / 25%);
-    box-shadow: 0 8px 20px oklch(0% 0 0 / 10%);
+    box-shadow: 0 8px 15px oklch(0% 0 0 / 10%);
 }
 
 .mood-btn.active {
@@ -130,67 +148,68 @@ header p {
     box-shadow: 0 8px 25px var(--primary-color);
 }
 
-.recommendations-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 2rem;
+.recommendation-single {
+    display: flex;
+    justify-content: center;
     min-height: 200px;
     opacity: 0;
     transform: translateY(20px);
-    transition: all 0.6s ease-out;
+    transition: all 0.5s ease-out;
 }
 
-.recommendations-grid.show {
+.recommendation-single.show {
     opacity: 1;
     transform: translateY(0);
 }
 
 .song-card {
     background-color: var(--card-bg);
-    border-radius: 1.5rem;
-    padding: 1.5rem;
-    text-align: left;
+    border-radius: 2rem;
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
     border: 1px solid var(--glass-border);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
 }
 
 .song-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 30px oklch(0% 0 0 / 12%);
+    transform: scale(1.02);
 }
 
 .song-info h3 {
-    font-size: 1.3rem;
-    margin-bottom: 0.3rem;
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
 }
 
 .song-info p {
-    font-size: 0.95rem;
-    opacity: 0.7;
-    margin-bottom: 1.2rem;
+    font-size: 1.1rem;
+    opacity: 0.8;
+    margin-bottom: 2rem;
 }
 
 .listen-link {
     display: inline-block;
-    padding: 0.6rem 1.2rem;
-    font-size: 0.9rem;
-    font-weight: 600;
+    padding: 1rem 2.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
     background-color: var(--primary-color);
     color: white;
     text-decoration: none;
-    border-radius: 0.8rem;
-    transition: opacity 0.2s ease;
+    border-radius: 1rem;
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
 .listen-link:hover {
     opacity: 0.9;
+    transform: scale(1.05);
 }
 
 .empty-state {
-    grid-column: 1 / -1;
     padding: 3rem;
-    opacity: 0.5;
+    opacity: 0.6;
     font-style: italic;
+    font-size: 1.2rem;
 }
 
 @media (max-width: 600px) {
@@ -200,8 +219,14 @@ header p {
     header h1 {
         font-size: 2rem;
     }
+    .mood-selector {
+        gap: 0.6rem;
+    }
     .mood-btn {
-        padding: 0.6rem 1.2rem;
-        font-size: 1rem;
+        padding: 0.6rem 1rem;
+        font-size: 0.95rem;
+    }
+    .song-info h3 {
+        font-size: 1.5rem;
     }
 }
