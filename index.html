@@ -3,14 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로또 번호 추첨기</title>
+    <title>오늘의 분위기 - 노래 추천</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="container">
-        <h1>로또 번호 추첨기</h1>
-        <button id="generate">추첨 시작</button>
-        <div id="numbers"></div>
+<body class="mood-default">
+    <div class="container glass">
+        <header>
+            <h1>오늘의 분위기</h1>
+            <p>지금 당신의 기분은 어떤가요? 어울리는 노래를 추천해 드릴게요.</p>
+        </header>
+        
+        <div class="mood-selector">
+            <button class="mood-btn" data-mood="happy" aria-label="기쁨">😊 기쁨</button>
+            <button class="mood-btn" data-mood="sad" aria-label="슬픔">😢 슬픔</button>
+            <button class="mood-btn" data-mood="energetic" aria-label="활기참">⚡ 활기참</button>
+            <button class="mood-btn" data-mood="chill" aria-label="차분함">🧘 차분함</button>
+        </div>
+
+        <main id="recommendations" class="recommendations-grid">
+            <!-- 노래 카드들이 여기에 생성됩니다 -->
+            <div class="empty-state">
+                <p>위에서 기분을 선택해 보세요!</p>
+            </div>
+        </main>
     </div>
     <script src="main.js"></script>
 </body>

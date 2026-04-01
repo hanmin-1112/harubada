@@ -1,95 +1,207 @@
 
 :root {
-    --primary-color: oklch(70% 0.25 260);
-    --background-start: oklch(30% 0.1 260);
-    --background-end: oklch(20% 0.1 280);
-    --glass-color: oklch(100% 0 0 / 10%);
-    --shadow-color: oklch(0% 0 0 / 25%);
+    /* Default Mood Colors */
+    --bg-start: oklch(30% 0.1 260);
+    --bg-end: oklch(20% 0.1 280);
+    --primary-color: oklch(70% 0.15 260);
+    --text-color: oklch(98% 0.01 260);
+    --glass-bg: oklch(100% 0 0 / 12%);
+    --glass-border: oklch(100% 0 0 / 20%);
+    --card-bg: oklch(100% 0 0 / 8%);
+    --transition-speed: 0.8s;
+}
+
+/* Mood-specific Themes */
+body.mood-happy {
+    --bg-start: oklch(85% 0.2 85); /* Warm Yellow-Orange */
+    --bg-end: oklch(75% 0.2 60);
+    --primary-color: oklch(80% 0.25 80);
+    --text-color: oklch(20% 0.05 85);
+    --glass-bg: oklch(100% 0 0 / 40%);
+    --card-bg: oklch(100% 0.02 85 / 15%);
+}
+
+body.mood-sad {
+    --bg-start: oklch(25% 0.08 260); /* Deep Blue-Indigo */
+    --bg-end: oklch(15% 0.08 280);
+    --primary-color: oklch(50% 0.15 260);
     --text-color: oklch(95% 0.01 260);
+    --glass-bg: oklch(0% 0 0 / 25%);
+    --card-bg: oklch(100% 0 0 / 5%);
+}
+
+body.mood-energetic {
+    --bg-start: oklch(65% 0.3 30); /* Electric Red-Pink */
+    --bg-end: oklch(55% 0.3 350);
+    --primary-color: oklch(60% 0.3 20);
+    --text-color: oklch(98% 0.01 20);
+    --glass-bg: oklch(0% 0 0 / 20%);
+    --card-bg: oklch(100% 0 0 / 10%);
+}
+
+body.mood-chill {
+    --bg-start: oklch(80% 0.1 160); /* Soft Mint-Teal */
+    --bg-end: oklch(70% 0.1 180);
+    --primary-color: oklch(75% 0.15 170);
+    --text-color: oklch(25% 0.05 170);
+    --glass-bg: oklch(100% 0 0 / 45%);
+    --card-bg: oklch(100% 0.02 170 / 12%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    display: grid;
-    place-content: center;
     min-height: 100vh;
-    background-image: linear-gradient(to bottom right, var(--background-start), var(--background-end));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(135deg, var(--bg-start), var(--bg-end));
+    background-attachment: fixed;
     color: var(--text-color);
-    margin: 0;
-    padding: 1rem;
-    box-sizing: border-box;
+    transition: background-image var(--transition-speed) ease, color 0.4s ease;
+    padding: 2rem 1rem;
 }
 
 .container {
+    width: 100%;
+    max-width: 900px;
+    padding: 3rem;
+    border-radius: 2rem;
     text-align: center;
-    background-color: var(--glass-color);
-    padding: 2.5rem 3rem;
-    border-radius: 1.5rem;
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid oklch(100% 0 0 / 20%);
-    box-shadow: 0 8px 32px 0 var(--shadow-color);
-    max-width: 500px;
 }
 
-h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    text-shadow: 0 2px 8px var(--shadow-color);
+.glass {
+    background-color: var(--glass-bg);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 10px 40px oklch(0% 0 0 / 15%);
+    transition: background-color var(--transition-speed) ease;
 }
 
-#generate {
-    padding: 1rem 2rem;
-    font-size: 1.2rem;
-    font-weight: 600;
-    cursor: pointer;
-    border: none;
-    border-radius: 0.75rem;
-    background-color: var(--primary-color);
-    color: var(--text-color);
-    transition: all 0.3s ease;
-    box-shadow: 
-        0 0 10px var(--primary-color), 
-        0 0 20px var(--primary-color), 
-        inset 0 0 5px oklch(100% 0.25 260 / 50%);
+header h1 {
+    font-size: 2.8rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    letter-spacing: -1px;
 }
 
-#generate:hover {
-    transform: translateY(-3px);
-    box-shadow: 
-        0 0 15px var(--primary-color), 
-        0 0 30px var(--primary-color), 
-        inset 0 0 5px oklch(100% 0.25 260 / 50%);
+header p {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    margin-bottom: 2.5rem;
 }
 
-#generate:active {
-    transform: translateY(0);
-}
-
-#numbers {
-    margin-top: 2rem;
+.mood-selector {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 1rem;
-    min-height: 70px; /* Allocate space for the numbers */
+    gap: 1.2rem;
+    margin-bottom: 3.5rem;
 }
 
-.number-ball {
-    width: 60px;
-    height: 60px;
+.mood-btn {
+    padding: 0.8rem 1.8rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: 1px solid var(--glass-border);
+    border-radius: 100px;
+    background-color: var(--glass-bg);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mood-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    background-color: oklch(100% 0 0 / 25%);
+    box-shadow: 0 8px 20px oklch(0% 0 0 / 10%);
+}
+
+.mood-btn.active {
+    background-color: var(--primary-color);
+    color: white;
+    border-color: transparent;
+    box-shadow: 0 8px 25px var(--primary-color);
+}
+
+.recommendations-grid {
     display: grid;
-    place-content: center;
-    font-size: 1.75rem;
-    font-weight: bold;
-    border-radius: 50%;
-    background-color: oklch(85% 0.15 260);
-    color: oklch(20% 0.1 280);
-    box-shadow: 0 4px 15px var(--shadow-color);
-    transition: transform 0.3s ease;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    min-height: 200px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.6s ease-out;
 }
 
-.number-ball:hover {
-    transform: scale(1.1);
+.recommendations-grid.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.song-card {
+    background-color: var(--card-bg);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    text-align: left;
+    border: 1px solid var(--glass-border);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.song-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px oklch(0% 0 0 / 12%);
+}
+
+.song-info h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.3rem;
+}
+
+.song-info p {
+    font-size: 0.95rem;
+    opacity: 0.7;
+    margin-bottom: 1.2rem;
+}
+
+.listen-link {
+    display: inline-block;
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    background-color: var(--primary-color);
+    color: white;
+    text-decoration: none;
+    border-radius: 0.8rem;
+    transition: opacity 0.2s ease;
+}
+
+.listen-link:hover {
+    opacity: 0.9;
+}
+
+.empty-state {
+    grid-column: 1 / -1;
+    padding: 3rem;
+    opacity: 0.5;
+    font-style: italic;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 2rem 1.2rem;
+    }
+    header h1 {
+        font-size: 2rem;
+    }
+    .mood-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 1rem;
+    }
 }

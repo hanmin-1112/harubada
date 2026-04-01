@@ -1,22 +1,28 @@
 
-# Lotto Number Generator
+# 오늘의 분위기 (Mood-Based Music Recommendation)
 
 ## Overview
 
-This is a simple web application that generates random lottery numbers with a modern and visually appealing interface.
+A modern, responsive web application that provides personalized music recommendations based on the user's current mood. It features a sleek glassmorphism design with dynamic background transitions.
 
 ## Features & Design
 
-*   **Number Generation**: Generates 6 unique random numbers between 1 and 45.
-*   **Modern UI**:
-    *   Uses modern CSS for a clean and polished look.
-    *   A soft, multi-layered background with a subtle gradient.
-    *   A glassmorphism effect on the main container.
-    *   Vibrant accent colors using the OKLCH color space for better perceptual uniformity.
-    *   Interactive button with hover and active states, including a "glow" effect.
-    *   Generated numbers are displayed in individual "balls" with hover effects.
-*   **Interactivity**: A "Generate Numbers" button to create a new set of numbers with smooth transitions.
+*   **Mood-Based Discovery**: Users can select from four primary moods:
+    *   😊 **Happy**: Bright, upbeat pop and K-pop hits.
+    *   😢 **Sad**: Emotional ballads and soul-stirring tracks.
+    *   ⚡ **Energetic**: High-energy dance and synth-pop.
+    *   🧘 **Chill**: Lofi, acoustic, and relaxing ambient music.
+*   **Modern Glassmorphism UI**:
+    *   Semi-transparent "glass" containers with frosted blur effects.
+    *   Dynamic background color transitions using OKLCH color space for vibrant and perceptually uniform themes.
+    *   Smooth animations for UI state changes and recommendation loading.
+*   **Interactive Song Cards**:
+    *   Minimalist cards displaying song titles and artists.
+    *   Direct links to listen to the songs on YouTube.
+*   **Fully Responsive**: Optimized for both mobile and desktop experiences.
 
-## Current Task
+## Technical Details
 
-*   **Deploy to a Public URL**: The user wants to view the application in a standard web browser, not the integrated preview. To fulfill this request, I will deploy the static website to Firebase Hosting. This will generate a public URL that the user can open in any browser.
+*   **HTML5**: Semantic structure for accessibility and SEO.
+*   **CSS3**: Custom properties (variables), OKLCH color functions, and Flexbox/Grid for layout.
+*   **Vanilla JavaScript**: State management for mood selection and dynamic DOM manipulation.
